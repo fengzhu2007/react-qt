@@ -20,8 +20,15 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Xml Sql Gui 
 
 add_library(ReactQt SHARED
         react_qt_global.h
-        widgets/q_button.h widgets/q_button.cpp
+        widgets/push_button.h widgets/push_button.cpp
         plugin.h plugin.cpp
+        widgets/label.h widgets/label.cpp
+        widgets/dialog.h widgets/dialog.cpp
+        widgets/widget.h widgets/widget.cpp
+        widgets/frame.h widgets/frame.cpp
+        widgets/action.h widgets/action.cpp
+        widgets/h_box_layout.h widgets/h_box_layout.cpp
+        widgets/v_box_layout.h widgets/v_box_layout.cpp
 
 
 )
@@ -46,7 +53,7 @@ set(TRANSLATIONS
 
 if(WIN32)
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy        ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}.dll        ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.dll
+    COMMAND ${CMAKE_COMMAND} -E copy        ${CMAKE_BINARY_DIR}/react-qt/src/${PROJECT_NAME}.dll        ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.dll
     COMMENT "Copying file to binary directory"
 )
 else()
